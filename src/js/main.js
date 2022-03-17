@@ -80,58 +80,42 @@ do {
   switch (seleccionProducto) {
     case "1":
       agregarAlCarrito(productos[0]);
-      alert(
-        `Agregaste a tu carrito ${productos[0].titulo}`
-      );
+      alert(`Agregaste a tu carrito ${productos[0].titulo}`);
       total += productos[0].precio;
       break;
     case "2":
       agregarAlCarrito(productos[1]);
-      alert(
-        `Agregaste a tu carritos ${productos[1].titulo}`
-      );
+      alert(`Agregaste a tu carritos ${productos[1].titulo}`);
       total += productos[1].precio;
       break;
     case "3":
       agregarAlCarrito(productos[2]);
-      alert(
-        `Agregaste a tu carrito ${productos[2].titulo}`
-      );
+      alert(`Agregaste a tu carrito ${productos[2].titulo}`);
       total += productos[2].precio;
       break;
     case "4":
       agregarAlCarrito(productos[3]);
-      alert(
-        `Agregaste a tu carrito ${productos[3].titulo}`
-      );
+      alert(`Agregaste a tu carrito ${productos[3].titulo}`);
       total += productos[3].precio;
       break;
     case "5":
       agregarAlCarrito(productos[4]);
-      alert(
-        `Agregaste a tu carrito ${productos[4].titulo}`
-      );
+      alert(`Agregaste a tu carrito ${productos[4].titulo}`);
       total += productos[4].precio;
       break;
     case "6":
       agregarAlCarrito(productos[5]);
-      alert(
-        `Agregaste a tu carrito ${productos[5].titulo}`
-      );
+      alert(`Agregaste a tu carrito ${productos[5].titulo}`);
       total += productos[5].precio;
       break;
     case "7":
       agregarAlCarrito(productos[6]);
-      alert(
-        `Agregaste a tu carrito ${productos[6].titulo}`
-      );
+      alert(`Agregaste a tu carrito ${productos[6].titulo}`);
       total += productos[6].precio;
       break;
     case "8":
       agregarAlCarrito(productos[7]);
-      alert(
-        `Agregaste a tu carrito ${productos[7].titulo}`
-      );
+      alert(`Agregaste a tu carrito ${productos[7].titulo}`);
       total += productos[7].precio;
       break;
     default:
@@ -146,9 +130,9 @@ do {
 } while (comprar !== "2");
 alert(`El total de su carrito es $ ${total}`);
 
-carrito.forEach(producto => {
-  console.log(producto.titulo)
-}) 
+carrito.forEach((producto) => {
+  console.log(producto.titulo);
+});
 
 // **********************************************************************************
 // Declaración de funciones *********************************************************
