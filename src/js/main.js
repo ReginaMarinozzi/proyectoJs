@@ -7,48 +7,56 @@ const productos = [
     titulo: "Sofá Amalfi ",
     precio: 87490,
     stock: 2,
+    imagenes: "./src/img/1.jpeg"
   },
   {
     id: 2,
     titulo: "Sofá Capri ",
     precio: 85390,
     stock: 4,
+    imagenes: "./src/img/2.jpeg"
   },
   {
     id: 3,
     titulo: "Sofá Praga ",
     precio: 94490,
     stock: 3,
+    imagenes: "./src/img/3.jpeg"
   },
   {
     id: 4,
     titulo: "Sofá Roma",
     precio: 104990,
     stock: 5,
+    imagenes: "./src/img/4.jpeg"
   },
   {
     id: 5,
     titulo: "Sofá Oxford ",
     precio: 115490,
     stock: 0,
+    imagenes: "./src/img/5.jpeg"
   },
   {
     id: 6,
     titulo: "Sofá Londres",
     precio: 136490,
     stock: 8,
+    imagenes: "./src/img/6.jpeg"
   },
   {
     id: 7,
     titulo: "Sofá Manchester",
     precio: 97990,
     stock: 7,
+    imagenes: "./src/img/7.jpeg"
   },
   {
     id: 8,
     titulo: "Sofá barcelona",
     precio: 86090,
     stock: 2,
+    imagenes: "./src/img/8.jpeg"
   },
 ];
 
@@ -56,89 +64,46 @@ const productos = [
 
 const carrito = [];
 
-//Declaro variables *****************************************************************
-
-let total = 0;
-let comprar;
-
 // **********************************************************************************
-// Pregunto que productos quiere agregar al carrito a travez de promt ***************
+// Dom ******************************************************************************
+generarCards(productos);
 
-do {
-  const seleccionProducto =
-    prompt(`Ingrese el número correspondiente al carrito producto que desea agregar al carrito:
-    1. ${productos[0].titulo}
-    2. ${productos[1].titulo}
-    3. ${productos[2].titulo}
-    4. ${productos[3].titulo}
-    5. ${productos[4].titulo}
-    6. ${productos[5].titulo}
-    7. ${productos[6].titulo}
-    8. ${productos[7].titulo}
-    `);
-
-  switch (seleccionProducto) {
-    case "1":
-      agregarAlCarrito(productos[0]);
-      alert(`Agregaste a tu carrito ${productos[0].titulo}`);
-      total += productos[0].precio;
-      break;
-    case "2":
-      agregarAlCarrito(productos[1]);
-      alert(`Agregaste a tu carritos ${productos[1].titulo}`);
-      total += productos[1].precio;
-      break;
-    case "3":
-      agregarAlCarrito(productos[2]);
-      alert(`Agregaste a tu carrito ${productos[2].titulo}`);
-      total += productos[2].precio;
-      break;
-    case "4":
-      agregarAlCarrito(productos[3]);
-      alert(`Agregaste a tu carrito ${productos[3].titulo}`);
-      total += productos[3].precio;
-      break;
-    case "5":
-      agregarAlCarrito(productos[4]);
-      alert(`Agregaste a tu carrito ${productos[4].titulo}`);
-      total += productos[4].precio;
-      break;
-    case "6":
-      agregarAlCarrito(productos[5]);
-      alert(`Agregaste a tu carrito ${productos[5].titulo}`);
-      total += productos[5].precio;
-      break;
-    case "7":
-      agregarAlCarrito(productos[6]);
-      alert(`Agregaste a tu carrito ${productos[6].titulo}`);
-      total += productos[6].precio;
-      break;
-    case "8":
-      agregarAlCarrito(productos[7]);
-      alert(`Agregaste a tu carrito ${productos[7].titulo}`);
-      total += productos[7].precio;
-      break;
-    default:
-      alert(`La opción ingresada no es valida`);
-  }
-
-  comprar =
-    prompt(`Ingrese opción 1 si desea seguir comprando u opción 2 si desea finalizar
-    1. Si
-    2. No
-    `);
-} while (comprar !== "2");
-alert(`El total de su carrito es $ ${total}`);
-
-carrito.forEach((producto) => {
-  console.log(producto.titulo);
-});
-
-// **********************************************************************************
-// Declaración de funciones *********************************************************
-
-function agregarAlCarrito(producto) {
-  carrito.push(producto);
+function generarCards(productosAMostrar){
+    let infoDeCards = ``;
+    productosAMostrar.forEach((productos) => {
+        infoDeCards += `<div class="col mb-5">
+        <div class="card h-100">
+            <!-- Sale badge-->
+            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">
+                ${(productos.stock > 0) ? 'Tenemos stock' : 'Out of stock'}
+            </div>
+            <!-- Product image-->
+            <img class="card-img-top" src="${productos.imagenes}" alt="..." />
+            <!-- Product details-->
+            <div class="card-body p-4">
+                <div class="text-center">
+                    <!-- Product name-->
+                    <h5 class="fw-bolder">${productos.titulo}</h5>
+                    <!-- Product price-->
+                    <span class="text-muted text-decoration-line-through"></span>$${productos.precio}
+                </div>
+            </div>
+            <!-- Product actions-->
+            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent" >
+                <div class="text-center">
+                    <button 
+                        onclick="agregarAlCarrito(${productos.id})"
+                        class="btn btn-outline-dark mt-auto" href="#">
+                        Add to cart
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>`;
+    });
+    mostrarCardsEnElHTML(infoDeCards);
 }
 
-// **********************************************************************************
+function mostrarCardsEnElHTML(cards) {
+    document.getElementById("cards-productos").innerHTML = cards;
+};
