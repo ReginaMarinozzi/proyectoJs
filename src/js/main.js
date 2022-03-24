@@ -107,3 +107,14 @@ function generarCards(productosAMostrar){
 function mostrarCardsEnElHTML(cards) {
     document.getElementById("cards-productos").innerHTML = cards;
 };
+
+
+// **********************************************************************************
+// Eventos **************************************************************************
+
+// Función agregar al carrito *******************************************************
+const agregarAlCarrito = (idProducto) => {
+  const productoCarrito = productos.find(productos => productos.id === idProducto);
+  carrito.push(productoCarrito);
+  document.getElementById("boton-comprar").innerHTML = carrito.length;
+}
