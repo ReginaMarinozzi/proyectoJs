@@ -11286,3 +11286,18 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+
+/* Header */
+
+#footer, #header, #navbar-carrito {
+  background-color: rgb(255, 201, 206);
+}
+
+#h1-mio, #navbar-carrito {
+  color: rgb(0, 59, 255);
+}
+
+.carrito-palabra {
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+}

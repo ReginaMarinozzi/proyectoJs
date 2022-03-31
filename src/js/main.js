@@ -7,114 +7,143 @@ const productos = [
     titulo: "Sofá Amalfi ",
     precio: 87490,
     stock: 2,
-    imagenes: "./src/img/1.jpeg"
+    imagen: "https://i.ibb.co/6ZLhwbj/1.jpg",
   },
   {
     id: 2,
     titulo: "Sofá Capri ",
     precio: 85390,
     stock: 4,
-    imagenes: "./src/img/2.jpeg"
+    imagen: "https://i.ibb.co/0j1YT76/2.jpg",
   },
   {
     id: 3,
     titulo: "Sofá Praga ",
     precio: 94490,
     stock: 3,
-    imagenes: "./src/img/3.jpeg"
+    imagen: "https://i.ibb.co/ypYdj6r/3.jpg",
   },
   {
     id: 4,
     titulo: "Sofá Roma",
     precio: 104990,
     stock: 5,
-    imagenes: "./src/img/4.jpeg"
+    imagen: "https://i.ibb.co/1rnS5cw/4.jpg",
   },
   {
     id: 5,
     titulo: "Sofá Oxford ",
     precio: 115490,
     stock: 0,
-    imagenes: "./src/img/5.jpeg"
+    imagen: "https://i.ibb.co/yyDw1tk/5.jpg",
   },
   {
     id: 6,
     titulo: "Sofá Londres",
     precio: 136490,
     stock: 8,
-    imagenes: "./src/img/6.jpeg"
+    imagen: "https://i.ibb.co/2kN1CNm/6.jpg",
   },
   {
     id: 7,
     titulo: "Sofá Manchester",
     precio: 97990,
     stock: 7,
-    imagenes: "./src/img/7.jpeg"
+    imagen: "https://i.ibb.co/XpQkj3M/7.jpg",
   },
   {
     id: 8,
     titulo: "Sofá barcelona",
     precio: 86090,
     stock: 2,
-    imagenes: "./src/img/8.jpeg"
+    imagen: "https://i.ibb.co/KNTfch5/8.jpg",
   },
 ];
 
-// Array de productos ***************************************************************
 
-const carrito = [];
+// Llamada a la función para generar la cards ****************************************
+
+cardsGeneradas(productos);
 
 // **********************************************************************************
-// Dom ******************************************************************************
-generarCards(productos);
+// Declaración de funciones *********************************************************
 
-function generarCards(productosAMostrar){
-    let infoDeCards = ``;
-    productosAMostrar.forEach((productos) => {
-        infoDeCards += `<div class="col mb-5">
-        <div class="card h-100">
-            <!-- Sale badge-->
-            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">
-                ${(productos.stock > 0) ? 'Tenemos stock' : 'Out of stock'}
-            </div>
-            <!-- Product image-->
-            <img class="card-img-top" src="${productos.imagenes}" alt="..." />
-            <!-- Product details-->
-            <div class="card-body p-4">
-                <div class="text-center">
-                    <!-- Product name-->
-                    <h5 class="fw-bolder">${productos.titulo}</h5>
-                    <!-- Product price-->
-                    <span class="text-muted text-decoration-line-through"></span>$${productos.precio}
-                </div>
-            </div>
-            <!-- Product actions-->
-            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent" >
-                <div class="text-center">
-                    <button 
-                        onclick="agregarAlCarrito(${productos.id})"
-                        class="btn btn-outline-dark mt-auto" href="#">
-                        Add to cart
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>`;
-    });
-    mostrarCardsEnElHTML(infoDeCards);
+// Agregar productos al carrito y actualizar la cantidad ****************************
+
+const agregarAlCarrito = (idProducto) => {
+
+    // Buscar el producto a agregar 
+    const productoCarrito = productos.find(producto => producto.id === idProducto);
+
+    // Envío el producto al array de carrito 
+    carrito.push(productoCarrito);
+
+    // Actualizando el storage del carrito 
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+
+    // Actualizo la cantidad de items en el HTML del carrito 
+    document.getElementById("boton-comprar").innerHTML = carrito.length;
 }
 
-function mostrarCardsEnElHTML(cards) {
+// Generar cards de productos ************************************************
+
+function cardsGeneradas(productosAMostrar) {
+    let acumuladorCards = ``;
+    productosAMostrar.forEach(producto => {
+        acumuladorCards += `<div class="card h-100">
+        <!-- Etiqueta de producto en "Sale" -->
+        <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Oferta</div>
+        <!-- Imagen del producto -->
+        <img class="card-img-top" src="${producto.imagen}" alt="..." />
+        <!-- Detalles del producto -->
+        <div class="card-body p-4">
+            <div class="text-center">
+                <!-- Nombre del procuto -->
+                <h5 class="fw-bolder">${producto.titulo}</h5>
+                <!-- Precio del producto-->
+                $ ${producto.precio}
+            </div>
+        </div>
+        <!-- Acciones en el proucto -->
+        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+            <div class="text-center">
+            <button 
+            onclick="agregarAlCarrito(${producto.id})"
+            class="btn btn-outline-dark mt-auto" href="#">
+            Agregar al carrito
+            </button>
+            </div>
+        </div>
+    </div>`
+    })
+    agregarCardsEnHTML(acumuladorCards);
+}
+
+// Insertar cards en el HTML ****************************************************************
+
+function agregarCardsEnHTML(cards) {
     document.getElementById("cards-productos").innerHTML = cards;
 };
 
+// Buscar productos ************************************************************************
 
-// **********************************************************************************
-// Eventos **************************************************************************
+function buscarProducto() {
+    const nombreProductoBuscado = document.getElementById("producto-buscado").value.toUpperCase().trim();
+    const productosEncontrados = productos.filter((producto) => {
+        return producto.titulo.toUpperCase().match(nombreProductoBuscado);
+    });
 
-// Función agregar al carrito *******************************************************
-const agregarAlCarrito = (idProducto) => {
-  const productoCarrito = productos.find(productos => productos.id === idProducto);
-  carrito.push(productoCarrito);
-  document.getElementById("boton-comprar").innerHTML = carrito.length;
+    cardsGeneradas(productosEncontrados);
 }
+
+// Ejecutar búsqueda cuando presione enter en barra de búsqueda *******************************
+
+const imputBusqueda = document.getElementById("producto-buscado");
+
+imputBusqueda.addEventListener("keyup", function (event) {
+    if (event.key === 'Enter') {
+        event.preventDefault();
+        document.getElementById("boton-buscar").click();
+    }
+});
+

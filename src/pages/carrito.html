@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="../../css/styles.css" rel="stylesheet" />
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- Navigation-->
+    <nav id="navbar-carrito" class="navbar navbar-expand-lg">
+        <div class="container px-4 px-lg-5">
+            <a class="navbar-brand" href="../../index.html">Sofa Shop</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                    <li class="nav-item"><a class="nav-link active" aria-current="page"
+                            href="../../index.html">Tienda</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#!">Nosotros</a></li>
+                </ul>
+                <!-- Buscador de productos -->
+                <input type="text" id="producto-buscado">
+                <button id="boton-buscar" class="me-5" onclick="buscarProducto()">
+                    <i class="bi bi-search"></i>
+                </button>
+                <!-- ./ Buscador de productos -->
+                <form class="d-flex">
+                    <button class="btn btn-outline-dark" type="submit">
+                        <i class="bi-cart-fill me-1"></i>
+                        <a class="carrito-palabra" href="./src/pages/carrito.html">Carrito</a>
+                        <span id="boton-comprar" class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+                    </button>
+                </form>
+
+            </div>
+        </div>
+    </nav>
+
+    <!-- Carrito -->
+
+    <section class="pt-5 pb-5">
+        <div class="container">
+            <div class="row w-100">
+                <div class="col-lg-12 col-md-12 col-12">
+                    <h3 class="display-5 mb-2 text-center">Productos en tu carrito</h3>
+                    <p class="mb-5 text-center">
+                        Actualmente tienes los siguientes productos cargados en tu carrito
+                    </p>
+                    <table id="shoppingCart" class="table table-condensed table-responsive">
+                        <thead>
+                            <tr>
+                                <th style="width:60%">Producto</th>
+                                <th style="width:12%">Precio</th>
+                                <th style="width:10%">Cantidad</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="items-carrito">
+
+                            <!-- Comienzo descripción producto -->
+                            <!-- Fin descripción producto -->
+
+                        </tbody>
+                    </table>
+
+                    <div class="float-end text-end">
+                        <h4>Subtotal: <span>0</span> </h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-4 d-flex align-items-center">
+                <div class="col-sm-6 order-md-2 text-end">
+                    <a href="#" class="btn btn-primary mb-4 btn-lg pl-5 pr-5">Finalizar compra</a>
+                </div>
+
+                <div class="col-sm-6 mb-3 mb-m-1 order-md-1 text-md-left">
+                    <a href="../../index.html" class="btn btn-primary mb-4 btn-lg pl-5 pr-5"><i
+                            class="bi bi-arrow-left"></i> Seguir comprando</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer-->
+    <footer id="footer" class="py-5">
+        <div class="container">
+
+        </div>
+    </footer>
+
+
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- JS-->
+    <script src="../js/funcionamientoCarrito.js"></script>
+    <script src="../js/itemsCarrito.js"></script>
+
+</body>
+
+</html>
