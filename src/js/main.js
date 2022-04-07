@@ -83,6 +83,14 @@ const agregarAlCarrito = (idProducto) => {
 
     // Actualizo la cantidad de items en el HTML del carrito 
     document.getElementById("boton-comprar").innerHTML = carrito.length;
+
+    // Sweet alert
+    swal({
+      title: `Agregaste ${productoCarrito.titulo} a tu carrito`,
+      text: "Ya casi es tuyo!",
+      icon: "success",
+      button: "Continuar comprando!",
+    });
 }
 
 // Generar cards de productos ************************************************
