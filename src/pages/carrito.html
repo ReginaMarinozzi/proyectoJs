@@ -2,51 +2,46 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>The Beauty Company - Carrito de compras</title>
     <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="../../assets/favicon.ico" />
     <!-- Bootstrap icons-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="../../css/styles.css" rel="stylesheet" />
-    <title>Document</title>
+    <!-- CSS only -->
 </head>
 
 <body>
-    <!-- Navigation-->
-    <nav id="navbar-carrito" class="navbar navbar-expand-lg">
+
+    <!-- Barra de navegación -->
+    <nav id="navbar-mia" class="navbar navbar-expand-lg navbar-light">
         <div class="container px-4 px-lg-5">
-            <a class="navbar-brand" href="../../index.html">Sofa Shop</a>
+            <a id="logo" class="navbar-brand fw-bold" href="../../index.html">The Beauty Company Store</a>
+
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                    <li class="nav-item"><a class="nav-link active" aria-current="page"
-                            href="../../index.html">Tienda</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#!">Nosotros</a></li>
                 </ul>
-                <!-- Buscador de productos -->
-                <input type="text" id="producto-buscado">
-                <button id="boton-buscar" class="me-5" onclick="buscarProducto()">
-                    <i class="bi bi-search"></i>
-                </button>
-                <!-- ./ Buscador de productos -->
-                <form class="d-flex">
-                    <button class="btn btn-outline-dark" type="submit">
-                        <i class="bi-cart-fill me-1"></i>
-                        <a class="carrito-palabra" href="./src/pages/carrito.html">Carrito</a>
-                        <span id="boton-comprar" class="badge bg-dark text-white ms-1 rounded-pill">0</span>
-                    </button>
-                </form>
 
+                <!-- Tabla de productos en carrito -->
+
+                <form class="d-flex">
+                    <a class="btn btn-outline-dark fw-bold" href="../../src/pages/cart.html" type="button">
+                        <i class="bi-cart-fill me-1"></i>
+                        Carrito
+                        <span class="badge bg-dark text-white ms-1 rounded-pill" id="cantidad-carrito">0</span>
+                    </a>
+                </form>
             </div>
         </div>
     </nav>
-
-    <!-- Carrito -->
 
     <section class="pt-5 pb-5">
         <div class="container">
@@ -74,7 +69,8 @@
                     </table>
 
                     <div class="float-end text-end">
-                        <h4>Subtotal: <span>0</span> </h4>
+                        <h4>Subtotal: <span id="subtotal-carrito">0</span> </h4>
+                        <h6> Valor USD actual: <span id="dolar-blue">0</span> </h6>
                     </div>
                 </div>
             </div>
@@ -93,21 +89,22 @@
     </section>
 
     <!-- Footer-->
-    <footer id="footer" class="py-5">
+    <footer id="footer" class="py-5 bg-dark">
         <div class="container">
-
+            <p class="m-0 text-center text-white"><a class="nav-link fw-bold" href="https://github.com/RoblesNX">
+                    Copyright &copy; Regina Marinozzi</a></p>
         </div>
     </footer>
-
-
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-
-    <!-- JS-->
-    <!-- Sweet Alert -->
+    <!-- Core theme JS-->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script src="../js/funcionamientoCarrito.js"></script>
-    <script src="../js/itemsCarrito.js"></script>
+    <script src="../../src/js/logicaCarrito.js"></script>
+    <script src="../../src/js/inventario.js"></script>
+    <script src="../../src/js/generadorCards.js"></script>
+    <script src="../../src/js/paginaCarrito.js"></script>
+
+
 </body>
 
 </html>

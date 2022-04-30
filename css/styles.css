@@ -11287,17 +11287,19 @@ textarea.form-control-lg {
   }
 }
 
-/* Header */
-
-#footer, #header, #navbar-carrito {
-  background-color: rgb(255, 201, 206);
+#lupa {
+  color: white;
 }
 
-#h1-mio, #navbar-carrito {
-  color: rgb(0, 59, 255);
+#header, #footer {
+  background: rgb(255, 192, 203);
+ 
 }
 
-.carrito-palabra {
-  text-decoration: none;
-  color: rgb(0, 0, 0);
+#h1-mio, #p-mio, #logo {
+  color: rgb(13, 27, 226);
+}
+
+#navbar-mia {
+  background: rgb(255, 192, 203);
 }
