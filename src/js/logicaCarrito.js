@@ -1,9 +1,9 @@
-// Traigo el valor en storage del carrito de productos.***********************************************************
+// Traigo el valor en storage del carrito de productos***********************************************************
 
 let carrito = validarStorageCarrito();
 let precioTotal = 0;
 
-// Actualizo el total del carrito en función de los items agregados. *********************************************
+// Actualizo el total del carrito de los items agregados*********************************************
 
 const totalCarrito = (arrayCarrito) => {
   precioTotal = 0;
@@ -14,10 +14,10 @@ const totalCarrito = (arrayCarrito) => {
 
 totalCarrito(carrito);
 
-// ************************************* DECLARO LAS FUNCIONES **************************************************
+// ************************************* FUNCIONES **************************************************************
 // **************************************************************************************************************
 
-// Inicio el carrito y compruebo si hay un carrito previamente guardado en el storage local *********************
+// Compruebo si hay un carrito previamente guardado en el storage ***********************************************
 
 function validarStorageCarrito() {
   if (localStorage.getItem("carrito") != null) {
@@ -28,7 +28,7 @@ function validarStorageCarrito() {
   }
 }
 
-// // Actualizo la cantidad de items en el HTML del carrito en base a la cantidad de items en mi array de carrito.****************
+// // Actualizo la cantidad de items en el HTML del carrito ******************************************************
 
 let acumuladorItems = 0;
 
@@ -46,30 +46,30 @@ function agregarAlCarrito(idProducto) {
   const productoEnCarrito = carrito.find(
     (producto) => producto.id == idProducto
   );
-  const productoEnCatalogo = productos.find(
+  const productoEnInventario = productos.find(
     (producto) => producto.id == idProducto
   );
 
-  const productoParaAgregar = productoEnCarrito || productoEnCatalogo;
+  const productoParaAgregar = productoEnCarrito || productoEnInventario;
 
   if (productoParaAgregar.stock > productoParaAgregar.cantidadEnCarrito) {
-    // ¿hay stock?
+    
     productoParaAgregar.cantidadEnCarrito++;
     productoEnCarrito == undefined && carrito.push(productoParaAgregar);
-    localStorage.setItem("carrito", JSON.stringify(carrito)); // Actualizo el carrito en storage **************************************
+    localStorage.setItem("carrito", JSON.stringify(carrito)); 
     actualizarItemsCarrito(carrito);
 
-    // Sweet alert anunciando el producto que se acaba de agregar al carrito ***********************************************************
+    // Sweet alert  ***********************************************************
     swal({
-      title: `Agregaste ${productoEnCatalogo.nombre} a tu carrito`,
+      title: `Agregaste ${productoEnInventario.nombre} a tu carrito`,
       text: "Ya casi es tuyo!",
       icon: "success",
       button: "Continuar comprando!",
     });
   } else {
-    // Sweet alert anunciando el producto que se acaba de agregar al carrito *********************************************************
+    // Sweet alert  *********************************************************
     swal({
-      title: `No hay stock del producto ${productoEnCatalogo.nombre}`,
+      title: `No hay stock del producto ${productoEnInventario.nombre}`,
       text: "Lo sentimos!",
       icon: "error",
       button: "Continuar comprando!",
@@ -86,7 +86,7 @@ function reducirCarrito(idProducto) {
     productoARemover.cantidadEnCarrito--;
     productoARemover.cantidadEnCarrito == 0 &&
       carrito.splice(carrito.indexOf(productoARemover), 1);
-    localStorage.setItem("carrito", JSON.stringify(carrito)); // Actualizo el carrito en storage **************************************
+    localStorage.setItem("carrito", JSON.stringify(carrito)); 
     actualizarItemsCarrito(carrito);
   }
 }
@@ -97,14 +97,14 @@ function quitarCarrito(idProducto) {
   );
   productoARemover.cantidadEnCarrito = 0;
   carrito.splice(carrito.indexOf(productoARemover), 1);
-  localStorage.setItem("carrito", JSON.stringify(carrito)); // Actualizo el carrito en storage *******************************************
+  localStorage.setItem("carrito", JSON.stringify(carrito)); 
   actualizarItemsCarrito(carrito);
 }
 
 function detalleProducto(idProducto) {
   let detalleTitulo = ``;
   let detalleDescripcion = ``;
-  const productoEnCatalogo = productos.find(
+  const productoEnInventario = productos.find(
     (producto) => producto.id == idProducto
   );
 
@@ -119,13 +119,13 @@ function detalleProducto(idProducto) {
     <section class="py-5">
         <div class="container px-4 px-lg-5 my-5">
             <div class="row gx-4 gx-lg-5 align-items-center">
-                <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="${productoEnCatalogo.imagen}" alt="..." /></div>
+                <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="${productoEnInventario.imagen}" alt="..." /></div>
                 <div class="col-md-6">
-                    <h1 class="display-5 fw-bolder">${productoEnCatalogo.nombre}</h1>
+                    <h1 class="display-5 fw-bolder">${productoEnInventario.nombre}</h1>
                     <div class="fs-5 mb-5">
-                        <span> Categoría: ${productoEnCatalogo.categoria}</span>
+                        <span> Categoría: ${productoEnInventario.categoria}</span>
                     </div>
-                    <p class="lead">${productoEnCatalogo.descripcion}</p>
+                    <p class="lead">${productoEnInventario.descripcion}</p>
                 </div>
             </div>
         </div>

@@ -1,16 +1,16 @@
-// Llamado a la función generadora de los items en la página de carrito. ****************************************
+// Llamó a la función que genera los items en el HTML del carrito ****************************************
 
 itemsGeneradas(carrito);
 
-// ************************************* DECLARO LAS FUNCIONES **************************************************
+// ************************************* FUNCIONES **************************************************************
 // **************************************************************************************************************
 
-// Función creadora del HTML de los items de la página de carrito. **********************************************
+// Función creadora del HTML de los items de la página de carrito **********************************************
 
 function itemsGeneradas(itemsAMostrar) {
   let acumuladorItems = ``;
   itemsAMostrar.forEach((producto) => {
-    acumuladorItems += `<!-- Comienzo descripción producto -->
+    acumuladorItems += `<!-- Productos -->
         <tr>
             <td data-th="Product">
                 <div class="row">
