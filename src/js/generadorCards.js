@@ -40,7 +40,7 @@ const generarCardsHTML = (arrayARecorrer) => {
   agregarCardsEnHTML(acumulador);
 };
 
-// Función que inserta el contenido de cada card en el HTML ************************************************************************
+// Función que inserta la card en el HTML ************************************************************************
 
 function agregarCardsEnHTML(cards) {
   document.getElementById("grupo-de-cards").innerHTML = cards;

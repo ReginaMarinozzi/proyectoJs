@@ -1,4 +1,4 @@
-// Función constructura de productos para mi catálogo **********************************************************************************************
+// Función constructura de productos **********************************************************************************************
 
 class Producto {
   constructor(
@@ -314,7 +314,7 @@ const Vela8 = new Producto(
   0
 );
 
-// Declaración de array de todos mis Productos ****************************************************************************************
+// Array de productos ****************************************************************************************
 
 const productos = [
   Crema1,

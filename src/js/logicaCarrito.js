@@ -1,9 +1,9 @@
-// Traigo el valor en storage del carrito de productos***********************************************************
+// Traigo el valor en storage del carrito ***********************************************************
 
 let carrito = validarStorageCarrito();
 let precioTotal = 0;
 
-// Actualizo el total del carrito de los items agregados*********************************************
+// Actualizo el total del carrito *********************************************
 
 const totalCarrito = (arrayCarrito) => {
   precioTotal = 0;

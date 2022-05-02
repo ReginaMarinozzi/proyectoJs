@@ -1,4 +1,4 @@
-// Barra de búsqueda de productos. *********************************************************************************************************************************************
+// Barra de búsqueda *********************************************************************************************************************************************
 function buscarProducto() {
   const nombreProductoBuscado = document
     .getElementById("producto-buscado")
@@ -11,7 +11,7 @@ function buscarProducto() {
   generarCardsHTML(productosEncontrados);
 }
 
-// Ejecutar búsqueda cuando presione enter en barra de búsqueda de productos. **********************************************************************************************
+// Ejecuto búsqueda de productos **********************************************************************************************
 const imputBusqueda = document.getElementById("producto-buscado");
 
 imputBusqueda.addEventListener("keyup", function (event) {
